@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <body id="root"></bodyid>
+    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <script>
+        const root = document.getElementById('root')
+        const span = React.createElement("span", {id : "create_span", style : {color : "red"} }, "hello I'm a span");
+        ReactDOM.render(span, root)
+    </script>
+</html>
