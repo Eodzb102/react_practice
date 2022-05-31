@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html lang="ko">
-    <body id="root"></bodyid>
+    <body>
+        <div id="root"></div>
+    </body>
     <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
         const root = document.getElementById("root");
+        let counter = 0;
 
-        // Title 과 Button은 선언식만 다른 함수
-        function Title () {
+        function counterUp () {
+            counter = counter + 1;
+            render();
+        }
+        
+        function render () {
+            ReactDOM.render(<Container />, root);
+        }
+
+        const Container = () => {
             return (
-                <h3 id="title" onMouseEnter={() => console.log('mouse enter!')}>
-                    Hello I'm a title 
-                </h3>
+                <div>
+                    <h3>Total clicks : {counter}</h3>
+                    <button onClick={counterUp}>click me!</button>
+                </div>
             )
         }
-        const Button = () => (
-            <button style={{backgroundColor: 'tomato',}} onClick={() => console.log('im clicked!')}>
-                click me!
-            </button>
-        )
-        
-        const Container = () => (
-            <div>
-                <Title />
-                <Button />
-            </div>
-        )
 
-        ReactDOM.render(<Container />, root)
+        render();
     </script>
 </html>
