@@ -9,7 +9,7 @@
     <script type="text/babel">
         const root = document.getElementById("root");
         let counter = 0;
-
+        
         function counterUp () {
             counter = counter + 1;
             render();
@@ -19,7 +19,7 @@
             ReactDOM.render(<Container />, root);
         }
 
-        const Container = () => {
+        function Container () {
             return (
                 <div>
                     <h3>Total clicks : {counter}</h3>
