@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <body>
+        <div id="root"></div>
+    </body>
+    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        const root = document.getElementById("root");
+  
+        function App () {
+            const [amount, setAmount] = React.useState();
+            const [flipped, setFlipped] = React.useState(false);
+            const onChange = (input) => {
+                setAmount(input.target.value);
+            };
+            const reset = () => setAmount('');
+            const onFlip = () => setFlipped((current) => !current)
+            return (
+                <div>
+                    <h1>Super Converter</h1>
+                    <div>
+                        <label htmlFor="minutes">Minutes</label>
+                        <input type="number" id="minutes" value={flipped ? (amount * 60) : amount} onChange={onChange} placeholder="Minutes" disabled={flipped} />
+                    </div>
+                    <div>
+                        <label htmlFor="hours">Hours</label>
+                        <input type="number" value={flipped ? amount : Math.round(amount / 60)} id="hours" onChange={onChange} placeholder="Hours" disabled={!flipped} />
+                    </div>
+                    <button onClick={reset}>Reset</button>
+                    <button onClick={onFlip}>Flip</button>
+                </div>
+            )
+        }
+
+        ReactDOM.render(<App />, root);
+    </script>
+</html>
